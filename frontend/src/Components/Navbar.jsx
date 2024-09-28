@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { openModal } from '../StoreComponent/SliceFolder/ModalSlice';
+const Navbar = ( )=> {
+  const dispatch = useDispatch();
 
-const Navbar = ()=> {
     const [sticky, setSticky]= useState(false);
-    useEffect(()=>{
+    
+   
+     useEffect(()=>{
         const handleScroll = ()=>{
             if (window.scrollY>0){
                 setSticky(true);
@@ -110,7 +115,7 @@ const Navbar = ()=> {
   </svg>
 </label>
     </div>
-  <div className=" ">
+  <div   onClick={() => dispatch(openModal())}  className=" ">
     <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer">Login</a>
   </div>
   </div>
