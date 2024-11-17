@@ -3,6 +3,9 @@ import Modal from 'react-modal';
 import { closeModal } from '../StoreComponent/SliceFolder/ModalSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
+import axios from 'axios';
 function Login() {
   const [loginDetails,setLoginDetails]=useState({
     email:"",
@@ -22,27 +25,32 @@ function Login() {
     console.log("loginDetails");
 
      // Handle login on button click
-  const handleLogin = () => {
+  const handleLogin = async() => {
     console.log("Login details: " ,loginDetails);
 
     // Example validation
     if (!loginDetails.email || !loginDetails.password) {
-      alert("Please enter both email and password");
+      toast.error("Please enter both email and password");
       return;
     }
+try {
+  const response = await axios.post("http://localhost:8001/user/login",loginDetails);
+  if(response){
+    toast.success(response.data.message);
+  }
+  
+} catch (error) {
+  toast.error(error.response.data.message);
+}
+ 
 
-    // Add your login logic here (e.g., API call)
-    // For example, if you're using an async API:
-    // dispatch(loginAction(loginDetails));
-
-    alert("Login successful!");
-
-    // Close the modal after successful login
-    dispatch(closeModal());
+ 
+     dispatch(closeModal());
   };
  
   return (
     <div>
+     <ToastContainer />
   <Modal
       isOpen={isOpen}
       onRequestClose={() => dispatch(closeModal())}

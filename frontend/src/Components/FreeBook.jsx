@@ -7,8 +7,7 @@ import Cards from './Cards';
 import { element } from 'prop-types';
 const FreeBook=() =>{
     const FreeBookData =  list.filter((data)=>data.category==="free");
-    console.log(FreeBookData);
-    var settings = {
+     var settings = {
         dots: true,
         infinite: false,
         speed: 500,
