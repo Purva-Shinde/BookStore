@@ -31,7 +31,7 @@ import 'react-toastify/dist/ReactToastify.css';
       const response = await axios.post("http://localhost:8001/user/signup",userData);
 console.log("response",response);
 toast.success(response.data.message);
-localStorage.setItem("users",JSON.stringify(response.data.user));
+localStorage.setItem("Users",JSON.stringify(response.data.user));
 setUserData({
   fullname:'',
   password:'',

@@ -37,6 +37,10 @@ try {
   const response = await axios.post("http://localhost:8001/user/login",loginDetails);
   if(response){
     toast.success(response.data.message);
+    setTimeout(() => {
+      window.location.reload();
+      localStorage.setItem("Users", JSON.stringify(response.data.user));
+    }, 1000);
   }
   
 } catch (error) {

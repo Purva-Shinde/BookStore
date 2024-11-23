@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import Cards from "./Cards";
  import { Link } from "react-router-dom";
-import list from '../../public/list.json';
-import axios from 'axios';
+ import axios from 'axios';
 
 const Course=()=> {
   const [book, setBook] = useState([]);
   const getBook = async()=>{
-    debugger
-    try {
+     try {
       const res = await axios.get('http://localhost:8001/book');
       setBook(res.data);
      } catch (error) {
@@ -26,7 +24,7 @@ const Course=()=> {
       <div className=" max-w-screen-2xl container mx-auto md:px-20 px-4">
         <div className="mt-28 items-center justify-center text-center">
           <h1 className="text-2xl  md:text-4xl">
-            We're delighted to have you{" "}
+            Were delighted to have you{" "}
             <span className="text-pink-500"> Here! :)</span>
           </h1>
           <p className="mt-12">
